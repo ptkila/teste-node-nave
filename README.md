@@ -1,1 +1,0 @@
-# teste-node-nave

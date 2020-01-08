@@ -6,8 +6,8 @@ const login = async (req, res) => {
 }
 
 const logout = async (req, res) => {
-    await AuthService.logout(req.params.user);
-    return res.status(204).json({
+    await AuthService.logout(req.user);
+    return res.json({
         message: 'Logged out successfully'
     });
 }

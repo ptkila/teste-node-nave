@@ -1,6 +1,7 @@
 const TokenService = require('../../services/TokenService');
 
 const authenticateUser = async (req, res, next) => {
+
   try {
     const responseExtractToken = extractJwtToken(req);
     if (responseExtractToken.error) {
@@ -8,21 +9,18 @@ const authenticateUser = async (req, res, next) => {
         message: responseExtractToken.message
       });
     }
-
     const token = responseExtractToken.token;
     const responseValidateToken = await TokenService.validateToken(token);
-
+    
     if (responseValidateToken.error) {
       return res.json({
         message: responseValidateToken.message,
       });
     }
 
-    var user = responseValidateToken.user;
-
+    const user = responseValidateToken.user;
     req.user = user;
-    req.isAdmin = isAdmin(user);
-
+    req.admin = isAdmin(user);
     next();
 
   } catch (error) {
@@ -48,7 +46,7 @@ const extractJwtToken = req => {
   };
 }
 
-const isAdmin = () => {
+const isAdmin = (user) => {
   return user.role == 'App//Admin'
 }
 

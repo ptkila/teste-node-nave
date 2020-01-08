@@ -37,18 +37,5 @@ module.exports = (sequelize, DataTypes) => {
 
     User.associate = function (models) {};
 
-    User.prototype.passwordMatches = async (password) => {
-        try {
-            return bcrypt.compareSync(password, this.password);
-        } catch (error) {
-            return false;
-        }
-
-    };
-
-    User.prototype.isAdmin = () => {
-        return this.role == 'App//Admin';
-    };
-
     return User;
 }

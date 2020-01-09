@@ -47,7 +47,7 @@ const extractJwtToken = req => {
 }
 
 const isAdmin = (user) => {
-  return user.role == 'App//Admin'
+  return user.role == 'App\\Admin'
 }
 
 module.exports = {

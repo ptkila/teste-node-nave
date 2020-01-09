@@ -20,16 +20,16 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       name: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.STRING,
       },
       phone: {
-        allowNull: true,
+        allowNull: false,
         unique: true,
         type: Sequelize.STRING,
       },
       cpf: {
-        allowNull: true,
+        allowNull: false,
         unique: true,
         type: Sequelize.STRING,
       },

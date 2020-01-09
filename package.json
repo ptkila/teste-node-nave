@@ -5,7 +5,12 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app\\app.js"
+    "start": "nodemon app\\app.js",
+    "db:create": "./node_modules/.bin/sequelize db:create",
+    "db:drop": "./node_modules/.bin/sequelize db:drop",
+    "db:migrate": "./node_modules/.bin/sequelize db:migrate",
+    "db:seed": "./node_modules/.bin/sequelize db:seed:all",
+    "db:setup": "db:create db:migrate db:seed:all"
   },
   "author": "Pablo Kila",
   "license": "ISC",

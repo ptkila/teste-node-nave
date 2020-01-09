@@ -31,14 +31,14 @@ const authenticateUser = async (req, res, next) => {
 }
 
 const extractJwtToken = req => {
-  if (!Reflect.ownKeys(req.headers).includes('authorization')) {
+  if (!Reflect.ownKeys(req.headers).includes('auth-token')) {
     return {
-      message: 'Header "authorization" not found',
+      message: 'Header "auth-token" not found',
       error: 1,
       token: null
     };
   }
-  const token = req.headers['authorization'];
+  const token = req.headers['auth-token'];
   return {
     message: 'Token found',
     error: 0,

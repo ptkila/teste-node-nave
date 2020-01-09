@@ -1,4 +1,4 @@
-const Application = require('../models').Application;
+const Application = require('../app/models').Application;
 
 const create = async ({
     candidateId,
@@ -28,10 +28,20 @@ const findByJob = async jobId => {
     })
 };
 
+const findByCandidateAndJob = async (candidateId, jobId) => {
+    return Application.findOne({
+        where: {
+            candidateId: candidateId,
+            jobId: jobId,
+        }
+    })
+};
+
 module.exports = {
     create: create,
     find: find,
     findByCandidate: findByCandidate,
     findByJob: findByJob,
+    findByCandidateAndJob: findByCandidateAndJob,
 }
 

@@ -3,13 +3,11 @@ const Candidate = require('../app/models').Candidate;
 const create = async ({
     name,
     userId,
-    email,
     phone,
     cpf,
 }) => Candidate.create({
     name: name,
-    user_id: userId,
-    email: email,
+    userId: userId,
     phone: phone,
     cpf: cpf,
 });

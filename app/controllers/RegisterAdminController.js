@@ -4,12 +4,10 @@ const helperMethods = require('../../helpers/methods');
 const reqNeededParams = ['name', 'password', 'password_confirmation', 'email'];
 
 const register = async (req, res) => {
-
-    // TODO: REQUEST VALIDATION
     let params = req.body;
 
-    if (!helperMethods.equalStrings(params.password, params.passwordConfirmation)) {
-        return res.status(200).json({
+    if (!helperMethods.equalStrings(params.password, params.password_confirmation)) {
+        return res.status(422).json({
             message: 'Passwords are different'
         });
     }

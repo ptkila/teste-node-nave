@@ -50,3 +50,36 @@ $ npm start
 #### 5. Estado inicial da aplicação
 
 Com essa combinação de comandos teremos a aplicação em estado de execução e um usuário do tipo Admin cadastrado no banco.
+
+## :pencil: Documentação
+
+A documentação está disponível no browser no momento da inicialização do projeto sob o endpoint raíz `/`. Há também um arquivo `Postman.json`, com exemplos de requests, para importação no Postman.
+
+## :zap: Scripts úteis
+
+A fim de abstrair comandos de execução de tarefas constantes, dispõe-se de alguns _scripts_ no arquivo `package.json`
+
+### Criação do banco de dados
+```console
+$ npm run db:create
+```
+
+### Exclusão do banco de dados
+```console
+$ npm run db:drop
+```
+
+### Rodar arquivos de migração do banco de dados
+```console
+$ npm run db:migrate
+```
+
+### Rodar arquivos de seed do banco de dados
+```console
+$ npm run db:seed
+```
+
+### Gerar documentação
+```console
+$ npm run docs:generate
+```

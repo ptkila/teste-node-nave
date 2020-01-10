@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
         }
     }, {
-        tableName: 'application',
+        tableName: 'applications',
     });
 
     Application.associate = function (models) {};

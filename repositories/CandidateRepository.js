@@ -16,7 +16,16 @@ const find = async id => {
     return Candidate.findByPk(id);
 };
 
+const findByUserId = async userId => {
+    return Candidate.findOne({
+        where: {
+            userId: userId,
+        }
+    });
+}
+
 module.exports = {
     create: create,
     find: find,
+    findByUserId: findByUserId,
 }

@@ -1,10 +1,10 @@
-const Application_Comment = require('../models').Application_Comment;
+const Application_Comment = require('../app/models').Application_Comment;
 
 const create = async ({
-    applicationId,
+    application_id,
     text
 }) => Application_Comment.create({
-    applicationId: applicationId,
+    applicationId: application_id,
     text: text,
 });
 
@@ -13,7 +13,7 @@ const find = async id => {
 };
 
 const findByApplication = async applicationId => {
-    return Application_Comment.findOne({
+    return Application_Comment.findAll({
         where: {
             applicationId: applicationId,
         }

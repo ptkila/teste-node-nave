@@ -9,10 +9,15 @@ const create = async ({
 });
 
 const find = async id => {
-    return Job.findByPk(id)
+    return Job.findByPk(id);
 };
+
+const list = async =>{
+    return Job.findAll();
+}
 
 module.exports = {
     create: create,
     find: find,
+    list:list,
 }

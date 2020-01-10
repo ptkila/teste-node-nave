@@ -51,11 +51,11 @@ $ npm start
 
 Com essa combinação de comandos teremos a aplicação em estado de execução e um usuário do tipo Admin cadastrado no banco.
 
-## :pencil: Documentação
+## Documentação
 
 A documentação está disponível no browser no momento da inicialização do projeto sob o endpoint raíz `/`. Há também um arquivo `postman_collection.json`, com exemplos de requests, para importação no Postman.
 
-## :zap: Scripts úteis
+## Scripts úteis
 
 A fim de abstrair comandos de execução de tarefas constantes, dispõe-se de alguns _scripts_ no arquivo `package.json`
 

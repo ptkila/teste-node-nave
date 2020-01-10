@@ -1,19 +1,19 @@
 const Application = require('../app/models').Application;
 
 const create = async ({
-    candidateId,
-    jobId,
+    candidate_id,
+    job_id,
 }) => Application.create({
-    candidateId: candidateId,
-    jobId: jobId,
+    candidateId: candidate_id,
+    jobId: job_id,
 });
 
 const find = async id => {
-    return Application.findByPk(id)
+    return Application.findByPk(id);
 };
 
 const findByCandidate = async candidateId => {
-    return Application.findOne({
+    return Application.findAll({
         where: {
             candidateId: candidateId,
         }
@@ -21,7 +21,7 @@ const findByCandidate = async candidateId => {
 };
 
 const findByJob = async jobId => {
-    return Application.findOne({
+    return Application.findAll({
         where: {
             jobId: jobId,
         }
@@ -37,11 +37,16 @@ const findByCandidateAndJob = async (candidateId, jobId) => {
     })
 };
 
+const list = async => {
+    return Application.findAll();
+}
+
 module.exports = {
     create: create,
     find: find,
     findByCandidate: findByCandidate,
     findByJob: findByJob,
     findByCandidateAndJob: findByCandidateAndJob,
+    list: list,
 }
 

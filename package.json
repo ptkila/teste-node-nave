@@ -9,8 +9,7 @@
     "db:create": "./node_modules/.bin/sequelize db:create",
     "db:drop": "./node_modules/.bin/sequelize db:drop",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
-    "db:seed": "./node_modules/.bin/sequelize db:seed:all",
-    "db:setup": "db:create db:migrate db:seed:all"
+    "db:seed": "./node_modules/.bin/sequelize db:seed:all"
   },
   "author": "Pablo Kila",
   "license": "ISC",

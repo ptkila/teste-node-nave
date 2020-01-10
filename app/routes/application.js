@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const ApplicationController = require('../controllers/ApplicationController');
 const ApplicationCommentController = require('../controllers/ApplicationCommentController');
+const Validator = require('../validator/validator');
 
 router.get('/list', (req, res, next) => {
     if (!req.admin) {
@@ -9,7 +10,13 @@ router.get('/list', (req, res, next) => {
     return ApplicationController.listAdmin(req, res);
 });
 
-router.get('/:application_id/comments', (req, res, next) => {
+router.get('/:application_id/comments', Validator.validationRules('application-list-comments'), (req, res, next) => {
+    const errors = Validator.validationResult(req);
+    if (! errors.isEmpty()) {
+        return res.status(422).json({
+            errors: errors.array(),
+        })
+    }
     if (!req.admin) {
         return res.status(403).json({
             message: 'only admin can access'
@@ -18,7 +25,13 @@ router.get('/:application_id/comments', (req, res, next) => {
     return ApplicationController.listApplicationComments(req, res);
 });
 
-router.post('/comment', (req, res, next) => {
+router.post('/comment', Validator.validationRules('application-comment'), (req, res, next) => {
+    const errors = Validator.validationResult(req);
+    if (! errors.isEmpty()) {
+        return res.status(422).json({
+            errors: errors.array(),
+        })
+    }
     if (!req.admin) {
         return res.status(403).json({
             message: 'only admin can access'

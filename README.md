@@ -53,7 +53,7 @@ Com essa combinação de comandos teremos a aplicação em estado de execução 
 
 ## :pencil: Documentação
 
-A documentação está disponível no browser no momento da inicialização do projeto sob o endpoint raíz `/`. Há também um arquivo `Postman.json`, com exemplos de requests, para importação no Postman.
+A documentação está disponível no browser no momento da inicialização do projeto sob o endpoint raíz `/`. Há também um arquivo `postman_collection.json`, com exemplos de requests, para importação no Postman.
 
 ## :zap: Scripts úteis
 

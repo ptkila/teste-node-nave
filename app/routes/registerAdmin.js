@@ -3,7 +3,7 @@ const registerAdminController = require('../controllers/RegisterAdminController'
 
 router.post('/', (req, res, next) => {
     if (! req.admin) {
-        return res.json({message: 'only admin can access'});
+        return res.status(403).json({message: 'only admin can access'});
     }
     return registerAdminController.register(req, res);
 });

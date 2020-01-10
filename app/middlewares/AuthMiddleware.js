@@ -5,7 +5,7 @@ const authenticateUser = async (req, res, next) => {
   try {
     const responseExtractToken = extractJwtToken(req);
     if (responseExtractToken.error) {
-      return res.json({
+      return res.status(403).json({
         message: responseExtractToken.message
       });
     }
@@ -13,7 +13,7 @@ const authenticateUser = async (req, res, next) => {
     const responseValidateToken = await TokenService.validateToken(token);
     
     if (responseValidateToken.error) {
-      return res.json({
+      return res.status(403).json({
         message: responseValidateToken.message,
       });
     }
@@ -24,7 +24,7 @@ const authenticateUser = async (req, res, next) => {
     next();
 
   } catch (error) {
-    return res.json({
+    return res.status(500).json({
       message: error.message
     });
   }
@@ -33,14 +33,14 @@ const authenticateUser = async (req, res, next) => {
 const extractJwtToken = req => {
   if (!Reflect.ownKeys(req.headers).includes('auth-token')) {
     return {
-      message: 'Header "auth-token" not found',
+      message: 'header "auth-token" not found',
       error: 1,
       token: null
     };
   }
   const token = req.headers['auth-token'];
   return {
-    message: 'Token found',
+    message: 'token found',
     error: 0,
     token: token,
   };

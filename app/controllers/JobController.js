@@ -32,9 +32,10 @@ const apply = async (req, res) => {
     }
 
     const params = req.body;
+    const userId = req.user.id;
 
     try {
-        var candidate = await CandidateRepository.find(params.candidateId);
+        var candidate = await CandidateRepository.find(params.candidate_id);
     } catch (err) {
         return res.status(500).json({
             message: err.message
@@ -47,14 +48,14 @@ const apply = async (req, res) => {
         });
     }
 
-    if (candidate.userId != req.userId) {
+    if (candidate.userId != userId) {
         return res.status(403).json({
             message: 'candidate invalid'
         });
     }
 
     try {
-        var jobExists = await JobRepository.find(params.jobId);
+        var jobExists = await JobRepository.find(params.job_id);
     } catch (err) {
         return res.status(500).json({
             message: err.message
@@ -68,7 +69,7 @@ const apply = async (req, res) => {
     }
 
     try {
-        var applicationExists = await ApplicationRepository.findByCandidateAndJob(params.candidateId, params.jobId);
+        var applicationExists = await ApplicationRepository.findByCandidateAndJob(params.candidate_id, params.job_id);
     } catch (err) {
         return res.status(500).json({
             message: err.message

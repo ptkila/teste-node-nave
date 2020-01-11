@@ -1,7 +1,6 @@
 const AdminRepository = require('../../repositories/AdminRepository');
 const UserRepository = require('../../repositories/UserRepository');
 const helperMethods = require('../../helpers/methods');
-const reqNeededParams = ['name', 'password', 'password_confirmation', 'email'];
 
 const register = async (req, res) => {
     let params = req.body;
@@ -23,7 +22,7 @@ const register = async (req, res) => {
 
     try {
         params.userId = newUser.id;
-        await AdminRepository.create(params);
+        var newAdmin = await AdminRepository.create(params);
     } catch (err) {
         await newUser.destroy();
         return res.status(500).json({
@@ -33,7 +32,8 @@ const register = async (req, res) => {
 
     return res.status(201).json({
         message: 'success',
-        user: newUser
+        user: newUser,
+        admin: newAdmin,
     });
 }
 

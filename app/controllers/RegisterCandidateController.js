@@ -1,7 +1,6 @@
 const CandidateRepository = require('../../repositories/CandidateRepository');
 const UserRepository = require('../../repositories/UserRepository');
 const helperMethods = require('../../helpers/methods');
-const reqNeededParams = ['name', 'password', 'password_confirmation', 'email', 'phone', 'cpf'];
 
 const register = async (req, res) => {
 
@@ -18,14 +17,13 @@ const register = async (req, res) => {
         var newUser = await UserRepository.create(params);
     } catch (err) {
         return res.status(500).json({
-            message: err.errors[0].message,
-            error: err
+            message: err.errors[0].message
         });
     }
 
     try {
         params.userId = newUser.id;
-        await CandidateRepository.create(params);
+        var newCandidate = await CandidateRepository.create(params);
     } catch (err) {
         await newUser.destroy();
         return res.status(500).json({
@@ -35,7 +33,8 @@ const register = async (req, res) => {
 
     return res.status(201).json({
         message: 'success',
-        user: newUser
+        user: newUser,
+        candidate: newCandidate
     });
 }
 

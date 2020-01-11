@@ -12,7 +12,16 @@ const find = async id => {
     return Admin.findByPk(id)
 };
 
+const findByUserId = async userId => {
+    return Admin.findOne({
+        where: {
+            userId: userId,
+        }
+    });
+}
+
 module.exports = {
     create: create,
     find: find,
+    findByUserId: findByUserId,
 }

@@ -12,7 +12,7 @@ const login = async ({
         if (! user) {
             return {
                 error: 1,
-                message: "User not found",
+                message: "user not found",
                 user: {},
             }
         };
@@ -21,7 +21,7 @@ const login = async ({
         if (! passwordIsMatching) {
             return {
                 error: 1,
-                message: "Incorrect password",
+                message: "user not found",
                 user: {},
             }
         };
@@ -30,6 +30,7 @@ const login = async ({
 
     } catch (err) {
         return {
+            error: 2,
             message: err.message
         }
     }
@@ -40,11 +41,13 @@ const logout = async user => {
         user.set('token', null);
         await user.save();
         return {
-            message: 'User logout',
+            error: 0,
+            message: 'user logout',
         };
     } catch (err) {
         return {
-            message: 'Error on logout',
+            error: 1,
+            message: 'error on logout',
         };
     }
 }

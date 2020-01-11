@@ -5,7 +5,7 @@ const authenticateUser = async (req, res, next) => {
   try {
     const responseExtractToken = extractJwtToken(req);
     if (responseExtractToken.error) {
-      return res.status(403).json({
+      return res.status(401).json({
         message: responseExtractToken.message
       });
     }
@@ -13,7 +13,7 @@ const authenticateUser = async (req, res, next) => {
     const responseValidateToken = await TokenService.validateToken(token);
     
     if (responseValidateToken.error) {
-      return res.status(403).json({
+      return res.status(401).json({
         message: responseValidateToken.message,
       });
     }

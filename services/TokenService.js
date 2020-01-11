@@ -39,14 +39,14 @@ const validateToken = async token => {
         
         if (user.token !== token) {
             return {
-                message: 'Token invalid',
+                message: 'token invalid',
                 error: 1,
                 user: {},
             };
         };
         
         return {
-            message: 'Token validated',
+            message: 'token validated',
             error: 0,
             user: user,
         };
@@ -54,7 +54,7 @@ const validateToken = async token => {
     } catch (err) {
         return {
             message: err.message,
-            error: 1,
+            error: 2,
             user: {},
         };
     }

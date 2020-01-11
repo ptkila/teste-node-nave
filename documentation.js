@@ -241,6 +241,7 @@
 *    }
  * @apiError (403 - FORBIDDEN) Forbidden Mensagem contendo a razão
  * @apiError (404 - NOTFOUND) NotFound Mensagem contendo a razão
+ * @apiError (409 - CONFLICT) Conflict Mensagem contendo a razão
  * @apiError (422 - UNPROCESSABLEENTITY) ValidationError.errors[] Listagem de campos inválidos
  * @apiError (500 - SERVERERROR) ServerError Mensagem contendo a razão
 */

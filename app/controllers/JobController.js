@@ -77,7 +77,7 @@ const apply = async (req, res) => {
     }
 
     if (applicationExists) {
-        return res.status(200).json({
+        return res.status(409).json({
             message: 'already applied to job'
         });
     }
